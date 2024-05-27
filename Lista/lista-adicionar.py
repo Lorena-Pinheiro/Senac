@@ -1,0 +1,12 @@
+country=["Alemanha","Itália","Japão"]
+country.append("Brasil")
+print(country)
+country=["Alemanha","Itália","Japão"]
+country.insert(2,"Brasil")
+print(country)
+country=["Alemanha","Itália","Japão"]
+country.insert(1,"Brasil")
+print(country)
+country=["Alemanha","Itália","Japão"]
+country.insert(0,"Brasil")
+print(country)                                      
