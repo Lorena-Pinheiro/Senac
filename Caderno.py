@@ -292,11 +292,11 @@ print(tradutor)"""
 tradutor1={"pineapple":"abacaxi","apple":"maça","orange":"laranja"}
 print(tradutor1["apple"])"""
 
-tradutor1={}
+"""tradutor1={}
 tradutor1={"pineapple":"abacaxi","apple":"maça","orange":"laranja"}
 print(tradutor1)
 del(tradutor1["apple"])
 print(tradutor1)
 print(tradutor1.pop("banana","Fruta não encontrada"))
 tradutor1.clear()
-print(tradutor1)
+print(tradutor1)"""
