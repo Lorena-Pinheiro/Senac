@@ -300,3 +300,97 @@ print(tradutor1)
 print(tradutor1.pop("banana","Fruta não encontrada"))
 tradutor1.clear()
 print(tradutor1)"""
+
+"""try:
+    a=int(input("digite uma palavra "))
+except ValueError:
+    print("Digite apenas números")
+except:
+    print("Erro desconhecido")
+else:
+    print("Deu certo")
+finally:
+    print("Final do algoritmo")"""
+
+"""while True:
+    try:
+        x=int(input("Digite 1 para realizar o cadastro ou 0 para sair "))
+    except:
+        print("Valor inválido, digite apenas números")
+    else:
+        if(x==1):
+            nome=input("Informe seu nome: ")
+            x=True
+            while x!=False:
+                try:
+                    rg=int(input("Informe o seu RG: "))
+                except:
+                    print("Digite um RG válido")
+                else:
+                    x=False
+            x=True
+            while x!=False:        
+                try:
+                    idade=int(input("Informe a sua idade: "))
+                except:
+                    print("Digite uma idade válida") 
+                else:
+                    x=False
+        elif(x==0):
+            print("Saindo")
+            break
+        else:
+            print("Opção inválida")"""
+    
+"""def hello(nome):
+    print("Olá",nome)
+hello("Ederson")"""
+
+"""def hello(nome):
+    print("Seja Bem-Vindo",nome)
+a=input("Digite seu nome: ")
+hello(a)"""
+
+"""def hello(nome,idade):
+    print("Olá",nome,"\nSua idade é ",idade)
+hello("Ederson",25)"""
+
+"""def soma(x,y):
+    result=x+y
+    return result
+
+a=int(input("Primeiro número: "))
+b=int(input("Segundo número: "))
+res=soma(a,b)
+print("Soma:",res)"""
+
+"""def inverte(nome,sobrenome):
+    nomeInverso=sobrenome+","+nome
+    return nomeInverso
+nome=input("Nome: ")
+sobrenome=input("Sobrenome: ")
+invertido=inverte(nome,sobrenome)
+print("Olá",invertido)"""
+
+"""def par(x):
+    if(x%2)==0:
+        return True
+    else:
+        return False
+    
+while True:
+    num=int(input("Insira um número: "))
+    if par(num):
+        print("É par")
+    else:
+        print("É ímpar")"""
+
+"""def cadastro():
+    name=input("Qual o seu nome: ")
+    age=int(input("Idade: "))
+    return name,age
+
+print("Iniciando cadastro...")
+nome,idade=cadastro()
+print("Cadastro realizado com sucesso")
+print(f"Seu nome é {nome} e você tem {idade} anos de idade")"""
