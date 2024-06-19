@@ -82,7 +82,7 @@ def cadastro_peca():
         else:
             break
     localizacao=input('Localização no veículo: ')
-    peca[numero_peca]={'nome':nome,}
+    peca[numero_peca]={'nome':nome,'marca':marca,'data_fabricacao':data_fabricacao,}
 
 def excluir_peca():
     while True:
