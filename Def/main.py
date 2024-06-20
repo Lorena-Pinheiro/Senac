@@ -1,4 +1,4 @@
-from funcao import(cadastro_cliente,excluir_cliente)
+from funcao import(cadastro_cliente,excluir_cliente,alterar_cliente,relatorio_cliente)
 
 while True:
     op=int(input('Menu de opções:\n1-Clientes\n2-Peças\n3-Serviços\n4-Contas a pagar\n5-Veículos\n6-Fornecedor\n7-Sair\n'))
