@@ -1,3 +1,6 @@
-tradutor1={}
-tradutor1={"pineapple":"abacaxi","apple":"maça","orange":"laranja"}
-print(tradutor1["apple"])
+teste={}
+id_cliente=input('')
+categoria=input('')
+novo_valor=input('')
+teste[id_cliente][categoria]=novo_valor
+print(teste)
