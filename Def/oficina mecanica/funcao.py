@@ -13,7 +13,10 @@ def cadastro_cliente():
     while True:
         try:
             id_cliente=int(input('ID: '))
-            break
+            if id_cliente in cliente:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print('Valor Inválido.\nDigite apenas números.')
     nome=input('Nome: ')
@@ -57,71 +60,79 @@ def excluir_cliente():
         print('Não existe um cliente com esse ID.')
 
 
-def alterar_cliente():
+def alterar_cliente(id_cliente):
+    print('--- Alteração dos Dados do Cliente ----')
     while True:
-        print('--- Alteração das Informações do Cliente ----')
         while True:
             try:
-                id_cliente=int(input('Digite o ID do cliente: '))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
-                print("Valor Inválido.\nDigite apenas números.")
-            if(id_cliente not in cliente):
-                print('Cliente não cadastrado.')
-        while True:
+                print("Valor Inválido.\nDigite apenas números.")   
+        if(categoria == 1):
+            novo_valor = input('Novo Nome: ')
+            cliente[id_cliente]['Nome'] = novo_valor
+        elif(categoria == 2):
             while True:
                 try:
-                    categoria=int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairo\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
-                    break
-                except:
-                    print("Valor Inválido.\nDigite apenas números.")   
-            if(categoria==1):
-                novo_valor = input('Novo Nome: ')
-                cliente[id_cliente]['Nome'] = novo_valor
-            elif(categoria==2):
-                while True:
-                    try:
-                        novo_valor=int(input('Novo CPF: '))
-                        break
-                    except:
-                        print("Valor Inválido.\nDigite apenas números.")
-                cliente[id_cliente]['CPF'] = novo_valor
-            elif(categoria==3):
-                novo_valor = input('Nova data de nascimento: ')
-                cliente[id_cliente]['Data de nascimento'] = novo_valor
-            elif(categoria==4):
-                novo_valor = input('Novo bairro: ')
-                cliente[id_cliente]['Bairro'] = novo_valor
-            elif(categoria==5):
-                novo_valor = input('Nova rua: ')
-                cliente[id_cliente]['Rua'] = novo_valor
-            elif(categoria==6):
-                novo_valor = int(input('Nova número para contato: '))
-                cliente[id_cliente]['Número para contato'] = novo_valor
-            elif(categoria==7):
-                novo_valor = input('Novo email: ')
-                cliente[id_cliente]['Email'] = novo_valor
-            elif(categoria==8 or op==2):
-                break
-            else:
-                print('Opção Inválida')
-            while True:
-                try:
-                    op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                    novo_valor = int(input('Novo CPF: '))
                     break
                 except:
                     print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção Inválida.')
-            elif(op==2):
-                print('Valor alterado e salvo.')
-                break
-            elif(op==1):
-                print('Voltando...')           
+            cliente[id_cliente]['CPF'] = novo_valor
+        elif(categoria == 3):
+            novo_valor = input('Nova data de nascimento: ')
+            cliente[id_cliente]['Data de nascimento'] = novo_valor
+        elif(categoria == 4):
+            novo_valor = input('Novo bairro: ')
+            cliente[id_cliente]['Bairro'] = novo_valor
+        elif(categoria == 5):
+            novo_valor = input('Nova rua: ')
+            cliente[id_cliente]['Rua'] = novo_valor
+        elif(categoria == 6):
+            while True:
+                try:
+                    novo_valor = int(input('Novo número para contato: '))
+                    break
+                except:
+                    print("Valor Inválido.\nDigite apenas números.")
+            cliente[id_cliente]['Número para contato'] = novo_valor
+        elif(categoria == 7):
+            novo_valor = input('Novo email: ')
+            cliente[id_cliente]['Email'] = novo_valor
+        elif(categoria == 8):
+            break
+        else:
+            print('Opção Inválida')
+            continue
+        while True:
+            try:
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
+            except:
+                print("Valor Inválido.\nDigite apenas números.")
+        if(op == 2):
+            print('Valor alterado e salvo.')
+            break
+        elif(op == 1):
+            print('Voltando...')          
 
     
-def relatorio_cliente():
-    print(cliente)
+def relatorio_cliente(cliente):
+    tamanho=len(cliente)
+    if(tamanho==0):
+        print('Nenhum cliente cadastrado.')
+    else:
+        for chave, valor in cliente.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_cliente(valor)
+            else:
+                print(f'{chave}: {valor}')
+
     
 
 
@@ -132,7 +143,10 @@ def cadastro_peca():
     while True:
         try:
             id_peca=int(input('ID:'))
-            break
+            if id_peca in peca:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print("Valor Inválido.\nDigite apenas números.")
     while True:
@@ -195,38 +209,28 @@ def excluir_peca():
         print('Não existe uma peça com esse ID.')
 
 
-def alterar_peca():
+def alterar_peca(id_peca):
+    print('--- Alteração dos Dados da Peça ----')
     while True:
-        print('--- Alteração das Informações da Peça ----')
         while True:
             try:
-                id_peca=int(input('Digite o ID da peça: '))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(id_peca not in peca):
-                print('Peça não cadastrado.')
-            else:
-                break
-        while True:
-            try:
-                categoria=int(input('Escolha a categoria que será alterada:\n1-Nome\n2-Marca\n3-Data de fabricação\n4-Função\n5-Peso\n6-Material\n7-Preço\n8-Quantidade\n9-Localização\n'))
-                break
-            except:
-                print("Valor Inválido.\nDigite apenas números.")        
-        if(categoria==1):
+        if(categoria == 1):
             novo_valor = input('Novo Nome: ')
             peca[id_peca]['Nome'] = novo_valor
-        elif(categoria==2):
-            novo_valor=input('Nova marca: ')
+        elif(categoria == 2):
+            novo_valor = input('Nova marca: ')
             peca[id_peca]['Marca'] = novo_valor
-        elif(categoria==3):
+        elif(categoria == 3):
             novo_valor = input('Nova data de fabricação: ')
             peca[id_peca]['Data de fabricacao'] = novo_valor
-        elif(categoria==4):
-            novo_valor = input('Novo Função: ')
+        elif(categoria == 4):
+            novo_valor = input('Nova função: ')
             peca[id_peca]['funcao'] = novo_valor
-        elif(categoria==5):
+        elif(categoria == 5):
             while True:
                 try:
                     novo_valor = int(input('Novo peso: '))
@@ -234,10 +238,10 @@ def alterar_peca():
                 except:
                     print('Valor Inválido.\nDigite apenas números.')
             peca[id_peca]['Peso'] = novo_valor
-        elif(categoria==6):
-            novo_valor = input('Novo material')
+        elif(categoria == 6):
+            novo_valor = input('Novo material: ')
             peca[id_peca]['Material'] = novo_valor
-        elif(categoria==7):
+        elif(categoria == 7):
             while True:
                 try:
                     novo_valor = int(input('Novo preço: '))
@@ -245,38 +249,50 @@ def alterar_peca():
                 except:
                     print('Valor Inválido.\nDigite apenas números.')
             peca[id_peca]['preco'] = novo_valor
-        elif(categoria==8):
+        elif(categoria == 8):
             while True:
                 try:
-                    novo_valor=int(input('Nova quantidade: '))
+                    novo_valor = int(input('Nova quantidade: '))
                     break
                 except:
                     print('Valor Inválido.\nDigite apenas números.')
             peca[id_peca]['Quantidade'] = novo_valor
-        elif(categoria==9):
-            novo_valor=input('Nova localização: ')
+        elif(categoria == 9):
+            novo_valor = input('Nova localização: ')
             peca[id_peca]['Localização'] = novo_valor
+        elif(categoria == 10):
+            print('Saindo da alteração.')
+            break
         else:
             print('Opção Inválida')
+            continue
         while True:
             try:
-                op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
-                break
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção não existente.')
-            else:
-                break
-        if(op==2):
+        if(op == 2):
             print('Valor alterado e salvo.')
             break
-        elif(op==1):
+        elif(op == 1):
             print('Voltando...')
 
 
-def relatorio_peca():
-    print(cliente)
+def relatorio_peca(peca):
+    tamanho=len(peca)
+    if(tamanho==0):
+        print('Nenhum peça cadastrada.')
+    else:
+        for chave, valor in peca.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_peca(valor)
+            else:
+                print(f'{chave}: {valor}')
 
 
 
@@ -288,7 +304,10 @@ def cadastro_servico():
     while True:
         try:
             id_servico=int(input('ID: '))
-            break
+            if id_servico in servico:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print("Valor Inválido.\nDigite apenas números.")
     tipo=input('Tipo do serviço: ')
@@ -339,22 +358,12 @@ def excluir_servico():
         print('Não existe um serviço com esse ID.')
 
 
-def alterar_servico():
+def alterar_servico(id_servico):
+    print('--- Alteração da Dados do Serviço ---')
     while True:
-        print('--- Alteração das Informações do Serviço ----')
         while True:
             try:
-                id_servico=int(input('Digite o ID da peça: '))
-                break
-            except:
-                print("Valor Inválido.\nDigite apenas números.")
-            if(id_servico not in servico):
-                print('Serviço não cadastrado.')
-            else:
-                break
-        while True:
-            try:
-                categoria=int(input('Escolha a categoria que será alterada:\n1-Nome\n2-Marca\n3-Data de fabricação\n4-Função\n5-Peso\n6-Material\n7-Preço\n8-Quantidade\n9-Localização\n'))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
                 print("Valor Inválido.\nDigite apenas números.")        
@@ -402,25 +411,34 @@ def alterar_servico():
             servico[id_servico]['Localização'] = novo_valor
         else:
             print('Opção Inválida')
+            continue
         while True:
             try:
-                op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
-                break
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção não existente.')
-            else:
-                break
-        if(op==2):
+        if(op == 2):
             print('Valor alterado e salvo.')
             break
-        elif(op==1):
+        elif(op == 1):
             print('Voltando...')
 
 
-def relatorio_servico():
-    print(servico)
+def relatorio_servico(servico):
+    tamanho=len(servico)
+    if(tamanho==0):
+        print('Nenhum serviço cadastrado.')
+    else:
+        for chave, valor in servico.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_servico(valor)
+            else:
+                print(f'{chave}: {valor}')
 
 
 
@@ -432,7 +450,10 @@ def cadastro_conta_pagar():
     while True:
         try:
             id_conta_pagar=int(input('ID: '))
-            break
+            if id_conta_pagar in conta_pagar:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print("Valor Inválido.\nDigite apenas números.")
     while True:
@@ -501,22 +522,12 @@ def excluir_conta_pagar():
         print('Não existe uma conta com esse ID.')
 
 
-def alterar_conta_pagar():
+def alterar_conta_pagar(id_conta_pagar):
+    print('--- Alteração da Dados da Conta ---')
     while True:
-        print('--- Alteração das Informações da Conta ----')
         while True:
             try:
-                id_conta_pagar=int(input('Digite o ID da conta: '))
-                break
-            except:
-                print("Valor Inválido.\nDigite apenas números.")
-            if(id_conta_pagar not in conta_pagar):
-                print('Conta não cadastrada.')
-            else:
-                break
-        while True:
-            try:
-                categoria=int(input('Escolha a categoria que será alterada:\n1-Número da conta\n2-Data de emissão\n3-Data de vencimento\n4-Valor\n5-Nome da empresa\n6-Endereço da empresa\n7-Número de contato\n8-Email\n9-CNPJ\n10-Nome do responsável pelo pagamento\n11-Endereço do responsável\n12-CPF\n'))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
                 print("Valor Inválido.\nDigite apenas números.")        
@@ -583,25 +594,34 @@ def alterar_conta_pagar():
             conta_pagar[id_conta_pagar]['CPF']=novo_valor
         else:
             print('Opção Inválida')
+            continue
         while True:
             try:
-                op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
-                break
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção não existente.')
-            else:
-                break
-        if(op==2):
+        if(op == 2):
             print('Valor alterado e salvo.')
             break
-        elif(op==1):
+        elif(op == 1):
             print('Voltando...')
 
 
-def relatorio_conta_pagar():
-    print(conta_pagar)
+def relatorio_conta_pagar(conta_pagar):
+    tamanho=len(conta_pagar)
+    if(tamanho==0):
+        print('Nenhum conta cadastrada.')
+    else:
+        for chave, valor in conta_pagar.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_conta_pagar(valor)
+            else:
+                print(f'{chave}: {valor}')
 
 
 
@@ -612,7 +632,10 @@ def cadastro_veiculo():
     while True:
         try:
             id_veiculo=int(input('ID: '))
-            break
+            if id_veiculo in veiculo:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print('Valor Inválido.\nDigite apenas números.')
     marca=input('Marca: ')
@@ -665,22 +688,12 @@ def excluir_veiculo():
         print('Não existe um veículo com esse ID.')
 
 
-def alterar_veiculo():
+def alterar_veiculo(id_veiculo):
+    print('--- Alteração da Dados do Veículo ---')
     while True:
-        print('--- Alteração das Informações do Veículo ----')
         while True:
             try:
-                id_veiculo=int(input('Digite o ID do veículo: '))
-                break
-            except:
-                print("Valor Inválido.\nDigite apenas números.")
-            if(id_veiculo not in veiculo):
-                print('Veículo não cadastrado.')
-            else:
-                break
-        while True:
-            try:
-                categoria=int(input('Escolha a categoria que será alterada:\n1-Marca\n2-Modelo\n3-Ano de fabricação\n4-Versão\n5-Número do Chassi\n6-Placa\n7-RENAVAM\n8-Quilometragem\n9-Câmbio\n'))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
                 print("Valor Inválido.\nDigite apenas números.")
@@ -732,26 +745,35 @@ def alterar_veiculo():
             novo_valor=input('Novo Câmbio: ')
             veiculo[id_veiculo]['Câmbio']
         else:
-            print('Opção Inválida')    
+            print('Opção Inválida')
+            continue
         while True:
             try:
-                op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
-                break
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção não existente.')
-            else:
-                break
-        if(op==2):
+        if(op == 2):
             print('Valor alterado e salvo.')
             break
-        elif(op==1):
+        elif(op == 1):
             print('Voltando...')
 
 
-def relatorio_veiculo():
-    print(veiculo)
+def relatorio_veiculo(veiculo):
+    tamanho=len(veiculo)
+    if(tamanho==0):
+        print('Nenhum veículo cadastrado.')
+    else:
+        for chave, valor in veiculo.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_veiculo(valor)
+            else:
+                print(f'{chave}: {valor}')
 
 
 
@@ -763,7 +785,10 @@ def cadastro_fornecedor():
     while True:
         try:
             id_fornecedor=int(input('ID: '))
-            break
+            if id_fornecedor in fornecedor:
+                print('ID já cadastrado. Por favor, escolha outro ID.')
+            else:
+                break
         except:
             print('Valor Inválido.\nDigite apenas números.')
     nome_empresa=input('Nome da empresa: ')
@@ -816,22 +841,12 @@ def excluir_fornecedor():
         print('Não existe um fornecedor com esse ID.')
 
 
-def alterar_fornecedor():
+def alterar_fornecedor(id_fornecedor):
+    print('--- Alteração da Dados do Fornecedor ---')
     while True:
-        print('--- Alteração das Informações do Fornecedor ----')
         while True:
             try:
-                id_fornecedor=int(input('Digite o ID do fornecedor: '))
-                break
-            except:
-                print("Valor Inválido.\nDigite apenas números.")
-            if(id_fornecedor not in fornecedor):
-                print('Fornecedor não cadastrado.')
-            else:
-                break
-        while True:
-            try:
-                categoria=int(input('Escolha a categoria que será alterada:\n1-Nome da empresa\n2-Horário de atendimento\n3-Endereço da empresa\n4-Número de contato\n5-Email\n6-Website\n7-CNPJ\n8-Produto/Serviço\n9-Valor\n'))
+                categoria = int(input('Escolha a categoria que será alterada:\n1-Nome\n2-CPF\n3-Data de nascimento\n4-Bairro\n5-Rua\n6-Número para contato\n7-Email\n8-sair\n'))
                 break
             except:
                 print("Valor Inválido.\nDigite apenas números.")
@@ -879,22 +894,31 @@ def alterar_fornecedor():
             fornecedor[id_fornecedor]['Valor']=novo_valor
         else:
             print('Opção Inválida')
+            continue
         while True:
             try:
-                op=int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
-                break
+                op = int(input('Gostaria de alterar algo mais?\n1-Sim        2-Não\n'))
+                if(op == 1 or op == 2):
+                    break
+                else:
+                    print('Opção Inválida.')
             except:
                 print("Valor Inválido.\nDigite apenas números.")
-            if(op != 1 or op != 2):
-                print('Opção não existente.')
-            else:
-                break
-        if(op==2):
+        if(op == 2):
             print('Valor alterado e salvo.')
             break
-        elif(op==1):
+        elif(op == 1):
             print('Voltando...')
 
 
-def relatorio_fornecedor():
-    print(fornecedor)
+def relatorio_fornecedor(fornecedor):
+    tamanho=len(fornecedor)
+    if(tamanho==0):
+        print('Nenhum fornecedor cadastrado.')
+    else:
+        for chave, valor in fornecedor.items():
+            if isinstance(valor, dict):
+                print(f'\n{chave}')
+                relatorio_fornecedor(valor)
+            else:
+                print(f'{chave}: {valor}')
