@@ -9,7 +9,7 @@ fornecedor={} #4/4
 
 #Funções do Cliente
 def cadastro_cliente():
-    print('---Digite as informações do cliente---')
+    print('--- Digite as informações do cliente ---')
     while True:
         try:
             id_cliente=int(input('ID: '))
@@ -47,6 +47,7 @@ def cadastro_cliente():
 
 
 def excluir_cliente():
+    print('--- Excluir cliente ---')
     while True:
         try:
             id_cliente=int(input('Digite o ID do cliente: '))
@@ -139,7 +140,7 @@ def relatorio_cliente(cliente):
 
 #Funções da Peça
 def cadastro_peca():
-    print('---Digite as informações da Peça---')
+    print('--- Digite as informações da Peça ---')
     while True:
         try:
             id_peca=int(input('ID:'))
@@ -196,6 +197,7 @@ def cadastro_peca():
 
 
 def excluir_peca():
+    print('--- Excluir peça ---')
     while True:
         try:
             id_peca=int(input('Digite o ID da peça: '))
@@ -300,7 +302,7 @@ def relatorio_peca(peca):
 
 #Funções do Serviço
 def cadastro_servico():
-    print('---Digite as informações do Serviço---')
+    print('--- Digite as informações do Serviço ---')
     while True:
         try:
             id_servico=int(input('ID: '))
@@ -345,6 +347,7 @@ def cadastro_servico():
  
     
 def excluir_servico():
+    print('--- Excluir serviço ---')
     while True:
         try:
             id_servico=int(input('Digite o número da peça: '))
@@ -446,7 +449,7 @@ def relatorio_servico(servico):
 
 #Funções das contas a pagar
 def cadastro_conta_pagar():
-    print('---Digite as informações da Conta---')
+    print('--- Digite as informações da Conta ---')
     while True:
         try:
             id_conta_pagar=int(input('ID: '))
@@ -509,6 +512,7 @@ def cadastro_conta_pagar():
 
 
 def excluir_conta_pagar():
+    print('--- Excluir conta ---')
     while True:
         try:
             id_conta_pagar=int(input('Digite o ID da conta: '))
@@ -629,6 +633,7 @@ def relatorio_conta_pagar(conta_pagar):
 
 #Funções do Veículo
 def cadastro_veiculo():
+    print('--- Digite as informações do Veículo ---')
     while True:
         try:
             id_veiculo=int(input('ID: '))
@@ -675,6 +680,7 @@ def cadastro_veiculo():
     
 
 def excluir_veiculo():
+    print('--- Excluir Veículo ---')
     while True:
         try:
             id_veiculo=int(input('Digite o ID do veículo: '))
@@ -828,6 +834,7 @@ def cadastro_fornecedor():
     
 
 def excluir_fornecedor():
+    print('--- Excluir fornecedor ---')
     while True:
         try:
             id_fornecedor=int(input('Digite o ID do fornecedor: '))
