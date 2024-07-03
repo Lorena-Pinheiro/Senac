@@ -1,4 +1,3 @@
-
-tradutor1={}
-tradutor1={"pineapple":"abacaxi","apple":"maça","orange":"laranja"}
-print(tradutor1["apple"])
+nums=[1,2,3]
+vals=nums[-1:-2]
+print(nums,'\n',vals)

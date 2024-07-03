@@ -394,3 +394,56 @@ print("Iniciando cadastro...")
 nome,idade=cadastro()
 print("Cadastro realizado com sucesso")
 print(f"Seu nome é {nome} e você tem {idade} anos de idade")"""
+
+
+#Classe
+"""class Vendedor():
+    def __init__(self,nome,vendas):
+        self.nome=nome
+        self.vendas=vendas
+
+vendedor1=Vendedor('Ederson',1000)
+print(vendedor1.nome)"""
+
+"""class Vendedor():
+    #atributos/caracteristicas
+    def __init__(self,nome,vendas):
+        self.nome=nome
+        self.vendas=vendas
+      
+    #Metodos  
+    def vendeu(self,vendas):
+        self.vendas=vendas
+        print(self.vendas)
+        
+    def bateu_meta(self,meta):
+        if self.vendas>meta:
+            print('Bateu meta')
+        else:
+            print('Não bateu a meta')
+
+vendedor1=Vendedor('Ederson',1000)
+print(vendedor1.nome)
+vendedor1.bateu_meta(100)"""
+
+"""class ControleRemoto():
+    def __init_subclass__(self,cor,altura,profundidade,largura):
+        self.cor=cor
+        self.altura=altura
+        self.profundidade=profundidade
+        self.largura=largura
+        
+    def mudar_canal(self,botao):
+        if botao=='+':
+            print('aumentar canal')
+        elif botao=='-':
+            print('diminuir canal')
+        else:
+            print('Valor Inválido')"""
+            
+class encapsulamento():
+    
+    #colocar 2 '_' do lado esquerdo no nome da varialvel faz com que ela so exista dentro da classe
+    def __init__(self,num1,num2):
+        self.__num1=num1
+        self.__num2=num2
